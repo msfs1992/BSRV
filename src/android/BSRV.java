@@ -10,7 +10,7 @@ package org.apache.cordova.plugin;
     /**
      * This class echoes a string called from JavaScript.
      */
-    public class BSRV extends CordovaPlugin {
+    public class Echo extends CordovaPlugin {
 
         @Override
         public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {

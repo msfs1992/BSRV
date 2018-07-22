@@ -1,0 +1,36 @@
+{
+  "name": "BSRV",
+  "version": "0.7.2",
+  "description": "Gather data from server.",
+  "cordova": {
+    "id": "BSRV",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msfs1992/BSRV.git"
+  },
+  "keywords": [
+    "background",
+    "bsrv",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    },
+    {
+      "name": "android-sdk",
+      "version": ">=16"
+    }
+  ],
+  "author": "Marcello Fabbiani",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/msfs1992/BSRV/issues"
+  },
+  "homepage": "https://github.com/msfs1992/BSRV"
+}

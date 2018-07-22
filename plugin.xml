@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="BSRV"
+    version="1.0.2">
+    <name>BSRV</name>
+
+    <description>Background service for information gathering</description>
+
+    <repo>https://github.com/katzer/cordova-plugin-background-mode.git</repo>
+
+    <keywords>yougotit, BSRV</keywords>
+
+    <license>Apache 2.0</license>
+
+    <author>Marcello Fabbiani</author>
+
+    <!-- cordova -->
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+        <engine name="android-sdk" version=">=16" />
+    </engines>
+
+    <!-- js -->
+    <js-module src="www/bsrv.js" name="BSRV">
+        <clobbers target="cordova.plugins.BSRV" />
+        <clobbers target="plugin.BSRV" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="BSRV" >
+                <param name="android-package"
+                      value="you.got.it.BSRV"/>
+            </feature>
+        </config-file>
+
+<!--         <config-file target="res/xml/config.xml" parent="/*">
+            <preference name="KeepRunning" value="true" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="de.appplant.cordova.plugin.background.ForegroundService" />
+        </config-file> -->
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+        </config-file>
+
+        <source-file
+            src="src/android/BSRV.java"
+            target-dir="src/you/got/it" />
+    </platform>
+
+</plugin>
