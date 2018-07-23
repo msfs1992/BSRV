@@ -24,7 +24,9 @@ package you.got.it.plugin;
 
         private void echo(String message, CallbackContext callbackContext) {
             if (message != null && message.length() > 0) {
-                Intent myServiceIntent = new Intent(this, performSync.class);
+
+                Intent myServiceIntent = new Intent(getApplicationContext(), performSync.class);
+                fireEvent(Event.ACTIVATE, null);
                 startService(myServiceIntent);
                 callbackContext.success(message);
             } else {
