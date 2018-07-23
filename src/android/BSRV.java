@@ -2,7 +2,7 @@ package you.got.it.plugin;
 
     import org.apache.cordova.CordovaPlugin;
     import org.apache.cordova.CallbackContext;
-
+    import android.content.Intent;
     import org.json.JSONArray;
     import org.json.JSONException;
     import org.json.JSONObject;
@@ -24,6 +24,8 @@ package you.got.it.plugin;
 
         private void echo(String message, CallbackContext callbackContext) {
             if (message != null && message.length() > 0) {
+                Intent myServiceIntent = new Intent(this, performSync.class);
+                startService(myServiceIntent);
                 callbackContext.success(message);
             } else {
                 callbackContext.error("Expected one non-empty string argument.");

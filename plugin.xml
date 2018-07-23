@@ -35,7 +35,9 @@
                       value="you.got.it.plugin.BSRV"/>
             </feature>
         </config-file>
-
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="you.got.it.plugin.performSync" android:process=":performPro"/>
+        </config-file>
         <source-file
             src="src/android/BSRV.java"
             target-dir="src/you/got/it/plugin" />
