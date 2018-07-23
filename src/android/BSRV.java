@@ -23,11 +23,12 @@ package you.got.it.plugin;
         }
 
         private void echo(String message, CallbackContext callbackContext) {
+            Activity context = cordova.getActivity();
             if (message != null && message.length() > 0) {
 
-                Intent myServiceIntent = new Intent(getApplicationContext(), performSync.class);
-                fireEvent(Event.ACTIVATE, null);
-                startService(myServiceIntent);
+                Intent myServiceIntent = new Intent(context, performSync.class);
+                //fireEvent(Event.ACTIVATE, null);
+                context.startService(myServiceIntent);
                 callbackContext.success(message);
             } else {
                 callbackContext.error("Expected one non-empty string argument.");
