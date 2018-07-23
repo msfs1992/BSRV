@@ -108,7 +108,7 @@ public class performSync extends Service {
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         String title = "Title";
         String text = "asdadaasdasdadadasasdasdasd";
-        int icon = android.R.drawable.icon;
+        int icon = android.R.drawable.ic_delete;
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
                 builder.setTicker("Ticker");
                 builder.setSmallIcon(icon);
