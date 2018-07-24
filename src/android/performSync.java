@@ -12,11 +12,11 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.HandlerThread;
+import android.os.Binder;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.os.Handler;
@@ -38,6 +38,7 @@ public class PerformSync extends Service {
     public static Runnable r = null;
     public int c = 0;
     public Handler dataHandler = null;
+    private final IBinder mBinder = new Binder();
     private class MyHandlerThread extends HandlerThread {
 
         Handler handler;
@@ -122,12 +123,12 @@ public class PerformSync extends Service {
     public PerformSync(){
         Log.d("MyService", "perform");
     }
-    @Nullable
+
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
         Log.d("MyService", "service bindeded");
-        return null;
+        return mBinder;
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {

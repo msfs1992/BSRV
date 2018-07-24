@@ -12,8 +12,10 @@ import org.json.JSONObject;
 /**
  * This class echoes a string called from JavaScript.
  */
+
 public class BSRV extends CordovaPlugin {
     PerformSync ps;
+    private boolean isBind = false;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -28,17 +30,17 @@ public class BSRV extends CordovaPlugin {
     private void echo(String message, CallbackContext callbackContext) {
         Activity context = cordova.getActivity();
         if (message != null && message.length() > 0) {
-
+            if(isBind) return;
             Intent myServiceIntent = new Intent(context, PerformSync.class);
         try {
-            context.bindService(intent, connection, BIND_AUTO_CREATE);
-            fireEvent(Event.ACTIVATE, null);
+            //context.bindService(intent, connection, BIND_AUTO_CREATE);
+            isBind = true;
             context.startService(myServiceIntent);
         } catch (Exception e) {
             Log.d("Error");
         }
 
-   
+        
             context.startService(myServiceIntent);
             callbackContext.success(message);
         } else {
