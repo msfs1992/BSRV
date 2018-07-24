@@ -119,7 +119,7 @@ public class PerformSync extends Service {
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         String title = "Title";
         String text = "asdadaasdasdadadasasdasdasd";
-        int icon = android.R.drawable.ic_delete;
+        int icon = org.apache.cordova.R.drawable.icon;
         Context context = getApplicationContext();
         Notification.Builder builder = new Notification.Builder(context);
         builder.setTicker("Ticker");
