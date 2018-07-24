@@ -119,7 +119,7 @@ public class PerformSync extends Service {
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         String title = "Title";
         String text = "asdadaasdasdadadasasdasdasd";
-        int icon = android.R.drawable.ic_delete;
+        int icon = android.R.drawable.icon;
         Context context = getApplicationContext();
         Notification.Builder builder = new Notification.Builder(context);
         builder.setTicker("Ticker");
@@ -130,7 +130,7 @@ public class PerformSync extends Service {
         builder.setSound(uri);
         builder.setContentIntent(pi);
         builder.setAutoCancel(true);
-        builder.setPriority(Notification.PRIORITY_MAX);
+        //builder.setPriority(Notification.PRIORITY_MAX);
 
 
         return builder.build();
