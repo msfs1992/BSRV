@@ -28,7 +28,7 @@ public class BackgroundSV extends CordovaPlugin {
         return false;
     }
 
-    public void enviar(String m){
+    public static void enviar(String m){
         callback.success(m);
     }
     private void echo(String message, CallbackContext callbackContext) {
