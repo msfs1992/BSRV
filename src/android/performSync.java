@@ -37,8 +37,6 @@ import java.util.logging.LogRecord;
 public class PerformSync extends Service {
     public static Runnable r = null;
     public int c = 0;
-    ExecutorService threadPoolExecutor = Executors.newSingleThreadExecutor();
-    Future longRunningTaskFuture;
     public Handler dataHandler = null;
     private class MyHandlerThread extends HandlerThread {
 
