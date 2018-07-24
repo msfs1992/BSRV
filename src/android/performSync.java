@@ -49,9 +49,11 @@ public class PerformSync extends Service {
 
         @Override
         protected void onLooperPrepared() {
+            Log.d("MyService", "Looper Prepared");
             Looper l = getLooper();
             dataHandler = new Handler(l) {
                 public void handleMessage(Message msg) {
+                    Log.d("MyService", "Handler function");
                     String nombre = msg.getData().getString("nombre");
                     String mensaje = msg.getData().getString("mensaje");
                     showNotification();
@@ -76,7 +78,7 @@ public class PerformSync extends Service {
                         dataHandler.sendMessage(msg);
 
                         dataHandler.postDelayed(this, 10000);
-                        if(c == 3){
+                        if(c == 4){
                             dataHandler.removeCallbacks(r);
                         }
                     } catch (Exception e) {
@@ -117,7 +119,7 @@ public class PerformSync extends Service {
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         String title = "Title";
         String text = "asdadaasdasdadadasasdasdasd";
-        int icon = you.got.it.plugin.R.drawable.icon;
+        int icon = android.R.drawable.ic_launcher;
         Context context = getApplicationContext();
         Notification.Builder builder = new Notification.Builder(context);
         builder.setTicker("Ticker");
