@@ -1,6 +1,7 @@
 package you.got.it.plugin;
 
 import android.app.Activity;
+import android.util.Log;
 import android.os.IBinder;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
