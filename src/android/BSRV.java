@@ -9,12 +9,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import you.got.it.plugin.performSync;
+import you.got.it.plugin.PerformSync;
 /**
  * This class echoes a string called from JavaScript.
  */
 public class BSRV extends CordovaPlugin {
-
+    private PerformSync ps;
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("echo")) {
@@ -29,7 +29,7 @@ public class BSRV extends CordovaPlugin {
         Activity context = cordova.getActivity();
         if (message != null && message.length() > 0) {
 
-            Intent myServiceIntent = new Intent(context, performSync.class);
+            Intent myServiceIntent = new Intent(context, PerformSync.class);
             //fireEvent(Event.ACTIVATE, null);
             context.startService(myServiceIntent);
             callbackContext.success(message);

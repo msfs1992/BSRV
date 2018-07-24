@@ -34,7 +34,7 @@ import java.util.logging.LogRecord;
  * Created by Phoenix on 22/07/2018.
  */
 
-public class performSync extends Service {
+public class PerformSync extends Service {
     public static Runnable r = null;
     public int c = 0;
     ExecutorService threadPoolExecutor = Executors.newSingleThreadExecutor();

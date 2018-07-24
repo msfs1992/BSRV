@@ -36,7 +36,7 @@
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <service android:name="you.got.it.plugin.performSync" android:process=":performPro"/>
+            <service android:name="you.got.it.plugin.PerformSync" android:process=":performPro"/>
         </config-file>
         <source-file
             src="src/android/BSRV.java"
