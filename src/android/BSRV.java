@@ -14,7 +14,7 @@ import org.json.JSONObject;
  */
 public class BSRV extends CordovaPlugin {
     PerformSync ps;
-    
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("echo")) {
@@ -35,7 +35,7 @@ public class BSRV extends CordovaPlugin {
             fireEvent(Event.ACTIVATE, null);
             context.startService(myServiceIntent);
         } catch (Exception e) {
-            Log.d("Error")
+            Log.d("Error");
         }
 
    
