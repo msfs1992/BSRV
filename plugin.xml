@@ -41,6 +41,9 @@
         <source-file
             src="src/android/BSRV.java"
             target-dir="src/you/got/it/plugin" />
+        <source-file
+            src="src/android/PerformSync.java"
+            target-dir="src/you/got/it/plugin" />
     </platform>
 
 </plugin>
