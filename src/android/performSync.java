@@ -49,11 +49,9 @@ public class PerformSync extends Service {
 
         @Override
         protected void onLooperPrepared() {
-            Log.d("MyService", "Looper Prepared");
             Looper l = getLooper();
             dataHandler = new Handler(l) {
                 public void handleMessage(Message msg) {
-                    Log.d("MyService", "Handler function");
                     String nombre = msg.getData().getString("nombre");
                     String mensaje = msg.getData().getString("mensaje");
                     showNotification();
@@ -119,7 +117,7 @@ public class PerformSync extends Service {
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         String title = "Title";
         String text = "asdadaasdasdadadasasdasdasd";
-        int icon = R.drawable.icon;
+        int icon = you.got.it.plugin.R.drawable.icon;
         Context context = getApplicationContext();
         Notification.Builder builder = new Notification.Builder(context);
         builder.setTicker("Ticker");
