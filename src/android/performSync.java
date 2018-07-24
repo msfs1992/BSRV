@@ -20,7 +20,7 @@ import android.os.Process;
 import android.util.Log;
 import android.os.Handler;
 import android.widget.Toast;
-
+import org.apache.cordova.CallbackContext;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutorService;
@@ -100,6 +100,7 @@ public class PerformSync extends Service {
     }
 
     public void showNotification(){
+        BackgroundSV.enviar("Hola desde background thread");
         JSONObject j = new JSONObject();
         Notification notification = makeNotification(j);
         getNotificationManager().notify(c, notification);

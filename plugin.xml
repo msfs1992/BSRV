@@ -22,24 +22,24 @@
     </engines>
 
     <!-- js -->
-    <js-module src="www/bsrv.js" name="BSRV">
-        <clobbers target="cordova.plugins.BSRV" />
-        <clobbers target="plugin.BSRV" />
+    <js-module src="www/bsrv.js" name="BackgroundSV">
+        <clobbers target="cordova.plugins.BackgroundSV" />
+        <clobbers target="plugin.BackgroundSV" />
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="config.xml" parent="/*">
-            <feature name="BSRV" >
+            <feature name="BackgroundSV" >
                 <param name="android-package"
-                      value="you.got.it.plugin.BSRV"/>
+                      value="you.got.it.plugin.BackgroundSV"/>
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <service android:name="you.got.it.plugin.PerformSync" android:process=":performPro"/>
         </config-file>
         <source-file
-            src="src/android/BSRV.java"
+            src="src/android/BackgroundSV.java"
             target-dir="src/you/got/it/plugin" />
         <source-file
             src="src/android/PerformSync.java"

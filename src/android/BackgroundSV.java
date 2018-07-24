@@ -14,10 +14,10 @@ import org.json.JSONObject;
  * This class echoes a string called from JavaScript.
  */
 
-public class BSRV extends CordovaPlugin {
+public class BackgroundSV extends CordovaPlugin {
     PerformSync ps;
     private boolean isBind = false;
-
+    CallbackContext callback;
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("echo")) {
@@ -28,7 +28,11 @@ public class BSRV extends CordovaPlugin {
         return false;
     }
 
+    public void enviar(String m){
+        callback.success(m);
+    }
     private void echo(String message, CallbackContext callbackContext) {
+        callback = callbackContext;
         Activity context = cordova.getActivity();
         if (message != null && message.length() > 0) {
             if(isBind) return;
@@ -40,7 +44,7 @@ public class BSRV extends CordovaPlugin {
         } catch (Exception e) {
             Log.d("Error", ""+e+"");
         }
-            callbackContext.success(message);
+            callback.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
         }
