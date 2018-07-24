@@ -17,7 +17,6 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.os.Handler;
 import android.widget.Toast;
@@ -99,26 +98,42 @@ public class PerformSync extends Service {
             dataHandler.postDelayed(r, 10000);
         }
     }
-    public void showNotification() {
+
+    public void showNotification(){
+        JSONObject j = new JSONObject();
+        Notification notification = makeNotification(j);
+        getNotificationManager().notify(c, notification);
+    }
+    private NotificationManager getNotificationManager() {
+        return (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+    }
+    private Notification makeNotification() {
+        return makeNotification();
+    }
+
+    private Notification makeNotification(JSONObject settings) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.setComponent(new ComponentName("you.got.it", "you.got.it.MainActivity"));
-        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+        PendingIntent pi = PendingIntent.getActivity(this, c, intent, 0);
         Resources r = getResources();
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         String title = "Title";
         String text = "asdadaasdasdadadasasdasdasd";
         int icon = android.R.drawable.ic_delete;
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-                builder.setTicker("Ticker");
-                builder.setSmallIcon(icon);
-                builder.setContentTitle(title);
-                builder.setContentText(text);
-                builder.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
-                builder.setSound(uri);
-                builder.setContentIntent(pi);
-                builder.setAutoCancel(true);
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(c, builder.build());
+        Context context = getApplicationContext();
+        Notification.Builder builder = new Notification.Builder(context);
+        builder.setTicker("Ticker");
+        builder.setSmallIcon(icon);
+        builder.setContentTitle(title);
+        builder.setContentText(text);
+        builder.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
+        builder.setSound(uri);
+        builder.setContentIntent(pi);
+        builder.setAutoCancel(true);
+        builder.setPriority(Notification.PRIORITY_MAX);
+
+
+        return builder.build();
     }
     public PerformSync(){
         Log.d("MyService", "perform");
