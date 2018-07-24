@@ -29,20 +29,17 @@ public class BSRV extends CordovaPlugin {
     }
 
     private void echo(String message, CallbackContext callbackContext) {
-        Activity context = cordova.getActivity();
+        //Activity context = cordova.getActivity();
         if (message != null && message.length() > 0) {
             if(isBind) return;
-            Intent myServiceIntent = new Intent(context, PerformSync.class);
+            Intent myServiceIntent = new Intent(this, PerformSync.class);
         try {
-            //context.bindService(intent, connection, BIND_AUTO_CREATE);
             isBind = true;
-            context.startService(myServiceIntent);
+            startService(myServiceIntent);
         } catch (Exception e) {
             Log.d("Error", ""+e+"");
         }
 
-        
-            context.startService(myServiceIntent);
             callbackContext.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
