@@ -38,7 +38,7 @@ public class BSRV extends CordovaPlugin {
             isBind = true;
             context.startService(myServiceIntent);
         } catch (Exception e) {
-            Log.d("Error");
+            Log.d("Error", ""+e+"");
         }
 
         
