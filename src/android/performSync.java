@@ -119,7 +119,7 @@ public class PerformSync extends Service {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(c, builder.build());
     }
-    public performSync(){
+    public PerformSync(){
         Log.d("MyService", "perform");
     }
     @Nullable
