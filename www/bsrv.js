@@ -1,6 +1,6 @@
 var BSRV = {
     initserv: function(successCallback, failureCallback) {
-        cordova.exec(successCallback, failureCallback, 'BSRV',
+        cordova.exec(successCallback, failureCallback, 'BackgroundSV',
             'echo', ["Marcello Fabbiani"]);
     }
 };

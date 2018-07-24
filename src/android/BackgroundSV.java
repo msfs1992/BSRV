@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class BackgroundSV extends CordovaPlugin {
     PerformSync ps;
     private boolean isBind = false;
-    CallbackContext callback;
+    private static CallbackContext callback;
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("echo")) {
