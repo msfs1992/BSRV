@@ -70,7 +70,7 @@ public class PerformSync extends Service {
                         Message msg = new Message();
                         Bundle b = new Bundle();
                         b.putString("nombre", "Marce");
-                        b.putString("mensaje", "Hello World");
+                        b.putString("mensaje", "Aguante YouGoIt!!!!");
                         msg.setData(b);
 
                         c++;
