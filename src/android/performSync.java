@@ -50,6 +50,52 @@ public class PerformSync extends Service {
         @Override
         protected void onLooperPrepared() {
             Log.d("MyService", "Looper Prepared");
+            Looper l = getLooper();
+            dataHandler = new Handler(l) {
+                public void handleMessage(Message msg) {
+                    Log.d("MyService", "Handler function");
+                    String nombre = msg.getData().getString("nombre");
+                    String mensaje = msg.getData().getString("mensaje");
+                    showNotification();
+                   /* String myData = (String) msg.obj;
+                    Toast.makeText(getApplicationContext(), ""+myData+"",
+                            Toast.LENGTH_LONG).show();*/
+
+                }
+            };
+            r = new Runnable() {
+                public void run() {
+                    try {
+                        // send to our Handler
+                        Message msg = new Message();
+                        Bundle b = new Bundle();
+                        b.putString("nombre", "Marce");
+                        b.putString("mensaje", "Aguante YouGoIt!!!!");
+                        msg.setData(b);
+
+                        c++;
+
+                        dataHandler.sendMessage(msg);
+
+                        dataHandler.postDelayed(this, 10000);
+                        if(c == 4){
+                            dataHandler.removeCallbacks(r);
+                        }
+                    } catch (Exception e) {
+                        // wait 30 seconds
+                        try {
+                            Thread.sleep(30000);
+                        } catch (InterruptedException ie) {
+                            // do nothing
+                        }
+                        // try again
+
+                    }
+
+
+                }
+            };
+            dataHandler.postDelayed(r, 10000);
         }
     }
 
@@ -68,12 +114,12 @@ public class PerformSync extends Service {
 
     private Notification makeNotification(JSONObject settings) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setComponent(new ComponentName("you.got.it", "you.got.it.MainActivity"));
+        intent.setComponent(new ComponentName("you.got.it", "you.got.it.BackgroundSV"));
         PendingIntent pi = PendingIntent.getActivity(this, c, intent, 0);
         Resources r = getResources();
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         String title = "Title";
-        String text = "asdadaasdasdadadasasdasdasd";
+        String text = "Usa YouGotIt para ofrecer tus servicios estes donde estes.";
         int icon = android.R.drawable.ic_delete;
         Context context = getApplicationContext();
         Notification.Builder builder = new Notification.Builder(context);
@@ -85,7 +131,7 @@ public class PerformSync extends Service {
         builder.setSound(uri);
         builder.setContentIntent(pi);
         builder.setAutoCancel(true);
-        //builder.setPriority(Notification.PRIORITY_MAX);
+        builder.setPriority(Notification.PRIORITY_MAX);
 
 
         return builder.build();
