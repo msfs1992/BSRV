@@ -50,52 +50,6 @@ public class PerformSync extends Service {
         @Override
         protected void onLooperPrepared() {
             Log.d("MyService", "Looper Prepared");
-            Looper l = getLooper();
-            dataHandler = new Handler(l) {
-                public void handleMessage(Message msg) {
-                    Log.d("MyService", "Handler function");
-                    String nombre = msg.getData().getString("nombre");
-                    String mensaje = msg.getData().getString("mensaje");
-                    showNotification();
-                   /* String myData = (String) msg.obj;
-                    Toast.makeText(getApplicationContext(), ""+myData+"",
-                            Toast.LENGTH_LONG).show();*/
-
-                }
-            };
-            r = new Runnable() {
-                public void run() {
-                    try {
-                        // send to our Handler
-                        Message msg = new Message();
-                        Bundle b = new Bundle();
-                        b.putString("nombre", "Marce");
-                        b.putString("mensaje", "Aguante YouGoIt!!!!");
-                        msg.setData(b);
-
-                        c++;
-
-                        dataHandler.sendMessage(msg);
-
-                        dataHandler.postDelayed(this, 10000);
-                        if(c == 4){
-                            dataHandler.removeCallbacks(r);
-                        }
-                    } catch (Exception e) {
-                        // wait 30 seconds
-                        try {
-                            Thread.sleep(30000);
-                        } catch (InterruptedException ie) {
-                            // do nothing
-                        }
-                        // try again
-
-                    }
-
-
-                }
-            };
-            dataHandler.postDelayed(r, 10000);
         }
     }
 

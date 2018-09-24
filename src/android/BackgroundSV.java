@@ -14,7 +14,7 @@ import org.json.JSONObject;
  * This class echoes a string called from JavaScript.
  */
 public class BackgroundSV extends CordovaPlugin {
-    //PerformSync ps;
+    PerformSync ps;
     private boolean isBind = false;
     private static CallbackContext callback;
     @Override
@@ -39,7 +39,7 @@ public class BackgroundSV extends CordovaPlugin {
                 Toast.LENGTH_SHORT);
             toast.show();
             //if(isBind) return;
-            //Intent myServiceIntent = new Intent(context, PerformSync.class);
+            Intent myServiceIntent = new Intent(context, PerformSync.class);
         //try {
             ////context.bindService(intent, connection, BIND_AUTO_CREATE);
             //isBind = true;
