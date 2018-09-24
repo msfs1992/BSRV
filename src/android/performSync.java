@@ -176,23 +176,7 @@ public class PerformSync extends Service {
 
         return notification.build();
     }
-        /**
-     * Retrieves the resource ID of the app icon.
-     *
-     * @param settings A JSON dict containing the icon name.
-     */
-    private int getIconResId(JSONObject settings) {
-        String icon = settings.optString("icon", NOTIFICATION_ICON);
-
-        // cordova-android 6 uses mipmaps
-        int resId = getIconResId(icon, "mipmap");
-
-        if (resId == 0) {
-            resId = getIconResId(icon, "drawable");
-        }
-
-        return resId;
-    }
+    
     public PerformSync(){
         Log.d("MyService", "perform");
     }
