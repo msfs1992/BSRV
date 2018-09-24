@@ -6,6 +6,7 @@ import android.os.IBinder;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 import android.content.Intent;
+import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,15 +34,19 @@ public class BackgroundSV extends CordovaPlugin {
         callback = callbackContext;
         Activity context = cordova.getActivity();
         if (message != null && message.length() > 0) {
-            //if(isBind) return;
+            if(isBind) return;
+            Toast toast = Toast.makeText(context,
+                "Bienvenido",
+                Toast.LENGTH_SHORT);
+            toast.show();
             //Intent myServiceIntent = new Intent(context, PerformSync.class);
-        //try {
+        try {
             ////context.bindService(intent, connection, BIND_AUTO_CREATE);
             //isBind = true;
-            //context.startService(myServiceIntent);
-        //} catch (Exception e) {
+            context.startService(myServiceIntent);
+        } catch (Exception e) {
             //Log.d("Error", ""+e+"");
-        //}
+        }
             callback.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
