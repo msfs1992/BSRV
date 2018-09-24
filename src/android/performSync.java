@@ -114,7 +114,7 @@ public class PerformSync extends Service {
     }
 
     private Notification makeNotification(JSONObject settings) {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
+/*        Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.setComponent(new ComponentName("you.got.it", "you.got.it.BackgroundSV"));
         PendingIntent pi = PendingIntent.getActivity(this, c, intent, 0);
         Resources r = getResources();
@@ -136,7 +136,62 @@ public class PerformSync extends Service {
         builder.setPriority(Notification.PRIORITY_MAX);
 
 
-        return builder.build();
+        return builder.build();*/
+        String title    = settings.optString("title", "Titulo You");
+        String text     = settings.optString("text", "Hello You");
+        boolean bigText = settings.optBoolean("bigText", false);
+        settings.optString("icon", "icon");
+        int icon = android.R.drawable.ic_delete;
+        Context context = getApplicationContext();
+        String pkgName  = context.getPackageName();
+        Intent intent   = context.getPackageManager()
+                .getLaunchIntentForPackage(pkgName);
+
+        Notification.Builder notification = new Notification.Builder(context)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setOngoing(true)
+                .setSmallIcon(icon);
+
+        if (settings.optBoolean("hidden", true)) {
+            notification.setPriority(Notification.PRIORITY_MIN);
+        }
+
+        if (bigText || text.contains("\n")) {
+            notification.setStyle(
+                    new Notification.BigTextStyle().bigText(text));
+        }
+
+        //setColor(notification, settings);
+
+        if (intent != null && settings.optBoolean("resume")) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            PendingIntent contentIntent = PendingIntent.getActivity(
+                    context, 455412215, intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+            notification.setContentIntent(contentIntent);
+        }
+
+        return notification.build();
+    }
+        /**
+     * Retrieves the resource ID of the app icon.
+     *
+     * @param settings A JSON dict containing the icon name.
+     */
+    private int getIconResId(JSONObject settings) {
+        String icon = settings.optString("icon", NOTIFICATION_ICON);
+
+        // cordova-android 6 uses mipmaps
+        int resId = getIconResId(icon, "mipmap");
+
+        if (resId == 0) {
+            resId = getIconResId(icon, "drawable");
+        }
+
+        return resId;
     }
     public PerformSync(){
         Log.d("MyService", "perform");
