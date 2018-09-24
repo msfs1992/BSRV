@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.support.v4.app.NotificationCompat;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Binder;
@@ -176,7 +175,7 @@ public class PerformSync extends Service {
 
         return notification.build();
     }
-    
+
     public PerformSync(){
         Log.d("MyService", "perform");
     }
