@@ -43,7 +43,7 @@ public class BackgroundSV extends CordovaPlugin {
         //try {
             ////context.bindService(intent, connection, BIND_AUTO_CREATE);
             //isBind = true;
-            //context.startService(myServiceIntent);
+            context.startService(myServiceIntent);
         //} catch (Exception e) {
             //Log.d("Error", ""+e+"");
         //}
