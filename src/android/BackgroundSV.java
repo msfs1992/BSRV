@@ -38,15 +38,15 @@ public class BackgroundSV extends CordovaPlugin {
                 "Bienvenido a YouGotIt",
                 Toast.LENGTH_SHORT);
             toast.show();
-            //if(isBind) return;
+            if(isBind) return;
             Intent myServiceIntent = new Intent(context, PerformSync.class);
-        //try {
-            ////context.bindService(intent, connection, BIND_AUTO_CREATE);
-            //isBind = true;
-            context.startService(myServiceIntent);
-        //} catch (Exception e) {
-            //Log.d("Error", ""+e+"");
-        //}
+            try {
+                ////context.bindService(intent, connection, BIND_AUTO_CREATE);
+                isBind = true;
+                context.startService(myServiceIntent);
+            } catch (Exception e) {
+                //Log.d("Error", ""+e+"");
+            }
             callback.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
