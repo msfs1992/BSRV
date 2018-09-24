@@ -121,8 +121,8 @@ public class PerformSync extends Service {
         String title = "Title";
         String text = "Usa YouGotIt para ofrecer tus servicios estes donde estes.";
         int icon = android.R.drawable.ic_delete;
-        Activity context = cordova.getActivity();
-        //Context context = getApplicationContext();
+        
+        Context context = getApplicationContext();
         Notification.Builder builder = new Notification.Builder(context);
         builder.setTicker("Ticker");
         builder.setSmallIcon(icon);
