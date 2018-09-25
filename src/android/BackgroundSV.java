@@ -48,7 +48,7 @@ public class BackgroundSV extends CordovaPlugin {
         notification.setContentTitle("Here is the title");
         notification.setContentText("I am the body text of your notification");
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, BackgroundSV.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         notification.setContentIntent(pendingIntent);
 
