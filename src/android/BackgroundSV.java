@@ -40,24 +40,6 @@ public class BackgroundSV extends CordovaPlugin {
         callback.success(m);
     }
 
-    public void createNotification(){
-        //Build the notification
-        int icon = android.R.drawable.ic_delete;
-        notification.setSmallIcon(icon);
-        notification.setTicker("This is the ticker");
-        notification.setWhen(System.currentTimeMillis());
-        notification.setContentTitle("Here is the title");
-        notification.setContentText("I am the body text of your notification");
-
-        Intent intent = new Intent(this, BackgroundSV.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        notification.setContentIntent(pendingIntent);
-
-        //Builds notification and issues it
-        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        nm.notify(1232, notification.build());
-
-    }
 
 
     private Notification makeNotification() {
