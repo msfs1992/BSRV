@@ -22,7 +22,6 @@ import android.net.Uri;
  */
 public class BackgroundSV extends CordovaPlugin {
     //PerformSync ps;
-    Activity context = cordova.getActivity();
     private boolean isBind = false;
     private static CallbackContext callback;
     @Override
@@ -40,7 +39,8 @@ public class BackgroundSV extends CordovaPlugin {
         getNotificationManager().notify(0, notification);
     }
     private NotificationManager getNotificationManager() {
-        return (NotificationManager) cordova.getActivity().getSystemService(NOTIFICATION_SERVICE);
+        Activity context = cordova.getActivity();
+        return (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
     }
     private Notification makeNotification() {
         return makeNotification();
@@ -72,7 +72,7 @@ public class BackgroundSV extends CordovaPlugin {
 
     private void echo(String message, CallbackContext callbackContext) {
         callback = callbackContext;
-        
+        Activity context = cordova.getActivity();
         if (message != null && message.length() > 0) {
             Toast toast = Toast.makeText(context,
                 "Bienvenido a YouGotIt",
