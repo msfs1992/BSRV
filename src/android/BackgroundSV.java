@@ -42,7 +42,8 @@ public class BackgroundSV extends CordovaPlugin {
 
     public void createNotification(){
         //Build the notification
-        notification.setSmallIcon(R.mipmap.ic_launcher);
+        int icon = android.R.drawable.ic_delete;
+        notification.setSmallIcon(icon);
         notification.setTicker("This is the ticker");
         notification.setWhen(System.currentTimeMillis());
         notification.setContentTitle("Here is the title");
