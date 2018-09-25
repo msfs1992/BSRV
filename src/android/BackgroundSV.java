@@ -16,7 +16,6 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.res.Resources;
 import android.media.RingtoneManager;
-//import android.support.v4.app.NotificationCompat;
 import android.net.Uri;
 /**
  * This class echoes a string called from JavaScript.
@@ -34,9 +33,39 @@ public class BackgroundSV extends CordovaPlugin {
         }
         return false;
     }
+    public void showNotification(){
+        JSONObject j = new JSONObject();
+        Notification notification = makeNotification(j);
+        getNotificationManager().notify(0, notification);
+    }
+    private NotificationManager getNotificationManager() {
+        return (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+    }
+    private Notification makeNotification() {
+        return makeNotification();
+    }
+    private Notification makeNotification(JSONObject settings) {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setComponent(new ComponentName("you.got.it", "you.got.it.BackgroundSV"));
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+        Resources r = getResources();
+        Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        String title = "Marc";
+        String text = "Holaa";
+        int icon = android.R.drawable.ic_delete;
+        Context context = getApplicationContext();
+        Notification.Builder builder = new Notification.Builder(context);
+        builder.setTicker("Ticker");
+        builder.setSmallIcon(icon);
+        builder.setContentTitle(title);
+        builder.setContentText(text);
+        builder.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
+        builder.setSound(uri);
+        builder.setContentIntent(pi);
+        builder.setAutoCancel(true);
+        builder.setPriority(Notification.PRIORITY_MAX);
 
-    public static void enviar(String m){
-        callback.success(m);
+        return builder.build();
     }
 
 
@@ -60,6 +89,7 @@ public class BackgroundSV extends CordovaPlugin {
             //notification = new NotificationCompat.Builder(this);
             //notification.setAutoCancel(true);
             //createNotification();
+            showNotification();
             callback.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
