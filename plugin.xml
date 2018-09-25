@@ -29,6 +29,8 @@
 
     <!-- android -->
     <platform name="android">
+        <framework src="com.android.support:appcompat-v7:21+" />
+        <framework src="com.android.support:support-v4:24.1.1" />
         <config-file target="config.xml" parent="/*">
             <feature name="BackgroundSV" >
                 <param name="android-package"
