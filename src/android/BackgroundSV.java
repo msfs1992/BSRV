@@ -24,7 +24,6 @@ import android.net.Uri;
 public class BackgroundSV extends CordovaPlugin {
     //PerformSync ps;
     private boolean isBind = false;
-    NotificationCompat.Builder notification;
     private static CallbackContext callback;
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
