@@ -68,7 +68,6 @@ public class BackgroundSV extends CordovaPlugin {
             if(isBind) return;
             //Intent myServiceIntent = new Intent(context, PerformSync.class);
             try {
-                makeNotification();
                 ////context.bindService(intent, connection, BIND_AUTO_CREATE);
                 isBind = true;
                 //context.startService(myServiceIntent);
