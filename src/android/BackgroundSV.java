@@ -40,32 +40,6 @@ public class BackgroundSV extends CordovaPlugin {
     }
 
 
-
-    private Notification makeNotification() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setComponent(new ComponentName("you.got.it", "you.got.it.MainActivity"));
-        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
-        Resources r = getResources();
-        Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        String title = "Title";
-        String text = "asdadaasdasdadadasasdasdasd";
-        int icon = android.R.drawable.ic_delete;
-        Context context = getApplicationContext();
-        Notification.Builder builder = new Notification.Builder(context);
-        builder.setTicker("Ticker");
-        builder.setSmallIcon(icon);
-        builder.setContentTitle(title);
-        builder.setContentText(text);
-        builder.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 });
-        builder.setSound(uri);
-        builder.setContentIntent(pi);
-        builder.setAutoCancel(true);
-        builder.setPriority(Notification.PRIORITY_MAX);
-
-
-        return builder.build();
-    }
-
     private void echo(String message, CallbackContext callbackContext) {
         callback = callbackContext;
         Activity context = cordova.getActivity();
@@ -86,7 +60,6 @@ public class BackgroundSV extends CordovaPlugin {
             //notification = new NotificationCompat.Builder(this);
             //notification.setAutoCancel(true);
             //createNotification();
-            makeNotification();
             callback.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
