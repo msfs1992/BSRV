@@ -22,6 +22,7 @@ import android.net.Uri;
  */
 public class BackgroundSV extends CordovaPlugin {
     //PerformSync ps;
+    Activity context = cordova.getActivity();
     private boolean isBind = false;
     private static CallbackContext callback;
     @Override
@@ -39,7 +40,7 @@ public class BackgroundSV extends CordovaPlugin {
         getNotificationManager().notify(0, notification);
     }
     private NotificationManager getNotificationManager() {
-        return (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        return (NotificationManager) cordova.getActivity().getSystemService(NOTIFICATION_SERVICE);
     }
     private Notification makeNotification() {
         return makeNotification();
@@ -71,7 +72,7 @@ public class BackgroundSV extends CordovaPlugin {
 
     private void echo(String message, CallbackContext callbackContext) {
         callback = callbackContext;
-        Activity context = cordova.getActivity();
+        
         if (message != null && message.length() > 0) {
             Toast toast = Toast.makeText(context,
                 "Bienvenido a YouGotIt",
@@ -89,7 +90,7 @@ public class BackgroundSV extends CordovaPlugin {
             //notification = new NotificationCompat.Builder(this);
             //notification.setAutoCancel(true);
             //createNotification();
-            showNotification();
+            //showNotification();
             callback.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
